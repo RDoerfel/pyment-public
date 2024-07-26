@@ -6,8 +6,8 @@ import os
 import requests
 import pandas as pd
 
-from ...utils import MODELS_DIR, METADATA_DIR
-
+from ...utils import MODELS_DIR
+import pkg_resources
 
 logformat = '%(asctime)s - %(levelname)s - %(name)s: %(message)s'
 logging.basicConfig(format=logformat, level=logging.INFO)
@@ -69,7 +69,9 @@ class WeightRepository:
             If multiple pretrained weights corresponding to the given
             architecture and name exists
         """
-        table = pd.read_csv(os.path.join(METADATA_DIR, 'models.csv'))
+        models_path = pkg_resources.resource_filename('pyment', 'data/models.csv')
+
+        table = pd.read_csv(models_path)
         key = (architecture, name)
         rows = table.loc[(table['architecture'] == architecture) & \
                         (table['name'] == name)]

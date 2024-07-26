@@ -24,5 +24,8 @@ setup(
         'console_scripts': [
             'pyment_predict = pyment.cli.predict:main',
         ]
-    }
+    },
+    package_data={
+        'pyment': ['data/*.csv'],
+    },
 )
