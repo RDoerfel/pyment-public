@@ -19,5 +19,10 @@ setup(
         'scikit-learn',
         'tensorflow',
         'matplotlib'
-    ]
+    ],
+    entry_points={
+        'console_scripts': [
+            'pyment_predict = pyment.cli.predict:main',
+        ]
+    }
 )
